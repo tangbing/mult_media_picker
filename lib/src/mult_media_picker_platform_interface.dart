@@ -25,10 +25,6 @@ abstract class MultMediaPickerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
-
   Future<PickMediaResult> getMedias({
   MediaType? mediaType,
   int maxCount = 9,

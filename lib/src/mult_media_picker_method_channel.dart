@@ -13,14 +13,6 @@ class MethodChannelMultMediaPicker extends MultMediaPickerPlatform {
   final methodChannel = const MethodChannel('mult_media_picker');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>(
-      'getPlatformVersion',
-    );
-    return version;
-  }
-
-  @override
   Future<PickMediaResult> getMedias({
     MediaType? mediaType,
     int maxCount = 9,

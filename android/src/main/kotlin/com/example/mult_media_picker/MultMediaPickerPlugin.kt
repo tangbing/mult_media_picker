@@ -49,9 +49,7 @@ class MultMediaPickerPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Pl
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else if (call.method == "pickMedia") {
+   if (call.method == "pickMedia") {
         maxCount = call.argument<Int>("maxCount") ?:0
         mediaType = call.argument<Int>("mediaType")
         val isSingle = call.argument<Boolean>("isSingle") ?:false

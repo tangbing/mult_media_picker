@@ -13,8 +13,6 @@ public class MultMediaPickerPlugin: NSObject, FlutterPlugin {
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
     case "pickMedia":
         let args = call.arguments as? [String : Any]
         let mediaType = args?["mediaType"] as? Int
