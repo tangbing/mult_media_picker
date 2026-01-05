@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mult_media_picker/mult_media_picker.dart';
 import 'package:mult_media_picker/mult_media_picker_platform_interface.dart';
-import 'package:mult_media_picker/mult_media_picker_method_channel.dart';
+import 'package:mult_media_picker/src/mult_media_picker_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockMultMediaPickerPlatform
@@ -20,7 +20,7 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    MultMediaPicker multMediaPickerPlugin = MultMediaPicker();
+    MultiMediaPicker multMediaPickerPlugin = MultiMediaPicker();
     MockMultMediaPickerPlatform fakePlatform = MockMultMediaPickerPlatform();
     MultMediaPickerPlatform.instance = fakePlatform;
 

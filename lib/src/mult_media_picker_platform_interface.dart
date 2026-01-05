@@ -1,9 +1,8 @@
-import 'dart:nativewrappers/_internal/vm/lib/typed_data_patch.dart';
 
-import 'package:mult_media_picker/src/Model.dart';
+import 'package:mult_media_picker/src/model.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'mult_media_picker_method_channel.dart';
+import './mult_media_picker_method_channel.dart';
 
 abstract class MultMediaPickerPlatform extends PlatformInterface {
   /// Constructs a MultMediaPickerPlatform.
@@ -30,11 +29,11 @@ abstract class MultMediaPickerPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<Uint8List?> getThumbnail() {
-    throw UnimplementedError('getThumbnail() has not been implemented.');
-  }
-
-  Future<List<Album>> getMedias(MediaItem? mediaType) {
+  Future<PickMediaResult> getMedias({
+  MediaType? mediaType,
+  int maxCount = 9,
+  bool isSingle = false,
+}) {
     throw UnimplementedError('getMedias() has not been implemented.');
   }
 

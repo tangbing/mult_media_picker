@@ -1,8 +1,4 @@
-
-
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +23,7 @@ class MediaItem {
   final int duration; // 视频秒数，图片为 0
 
 
-  static const _channel = MethodChannel('multi_media_picker');
+  static const _channel = MethodChannel('mult_media_picker');
 
 
   MediaItem({
@@ -74,8 +70,35 @@ class MediaItem {
       });
     } catch (e) {
       print('Error getting thumbnail: $e');
+      return null;
     }
     return _thumbnail;
+  }
+
+  Widget buildThumbnail({
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.cover
+}) {
+    if (!isAsset && mediaType == MediaType.image && File(path).existsSync()) {
+      return Image.file(File(path), width: width, height: height, fit: fit);
+    }
+    return FutureBuilder(
+        future: getThumbnail(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData && snapshot.data != null) {
+            return Image.memory(snapshot.data!, width: width, height: height, fit: fit);
+          }
+          return Container(
+            width: width,
+            height: height,
+            color: Colors.grey[300],
+            child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+          );
+        },
+    );
+
+
   }
 
   @override
